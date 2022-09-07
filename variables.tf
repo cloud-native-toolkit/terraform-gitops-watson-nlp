@@ -79,3 +79,25 @@ variable "server_name" {
   description = "The name of the server"
   default     = "default"
 }
+
+variable "enable_sso" {
+  type        = bool
+  description = "Flag indicating if oauth should be applied (only available for OpenShift)"
+  default     = true
+}
+
+variable "tls_secret_name" {
+  description = "The name of the secret containing the tls certificate values"
+  default     = ""
+}
+
+variable "cluster_ingress_hostname" {
+  type        = string
+  description = "Ingress hostname of the cluster."
+  default     = ""
+}
+
+variable "cluster_type" {
+  description = "The cluster type (openshift or kubernetes)"
+  default     = "openshift"
+}

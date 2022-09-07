@@ -1,6 +1,6 @@
-name: gitops-watson-nlp
+name: terraform-gitops-watson-nlp
 type: gitops
-description: Module to populate a gitops repo with the resources to provision watson-nlp
+description: terraform-gitops-watson-nlp
 tags:
   - tools
   - gitops
@@ -39,4 +39,3 @@ versions:
         moduleRef:
           id: gitops
           output: sealed_secrets_cert
-softwareProvider: ibm

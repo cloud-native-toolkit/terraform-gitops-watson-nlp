@@ -28,7 +28,7 @@ fi
 
 export KUBECONFIG=$(cat .kubeconfig)
 NAMESPACE=$(cat .namespace)
-COMPONENT_NAME=$(jq -r '.name // "my-module"' gitops-output.json)
+COMPONENT_NAME=$(jq -r '.name // "swaggereditor"' gitops-output.json)
 BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
 SERVER_NAME=$(jq -r '.server_name // "default"' gitops-output.json)
 LAYER=$(jq -r '.layer_dir // "2-services"' gitops-output.json)
@@ -45,10 +45,12 @@ find . -name "*"
 set -e
 
 validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values.yaml"
+validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values-${SERVER_NAME}.yaml"
+
 
 check_k8s_namespace "${NAMESPACE}"
 
-#check_k8s_resource "${NAMESPACE}" "deployment" "${COMPONENT_NAME}"
-
+check_k8s_resource "${NAMESPACE}" "deployment" "${COMPONENT_NAME}"
+#kubectl rollout status -n ${var.releases_namespace} deployment/swaggereditor
 cd ..
 rm -rf .testrepo

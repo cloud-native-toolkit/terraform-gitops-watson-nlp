@@ -1,11 +1,30 @@
 locals {
-  name          = "my-module"
+  name          = "helm-guestbook"
   bin_dir       = module.setup_clis.bin_dir
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
+  #yaml_dir      = "${path.cwd}/.tmp/${local.name}"
   service_url   = "http://${local.name}.${var.namespace}"
+  cluster_type = var.cluster_type == "kubernetes" ? "kubernetes" : "openshift"
   values_content = {
+    helm-guestbook = {
+    replicaCount = "1"
+    "image.repository" = "gcr.io/heptio-images/ks-guestbook-demo"
+    "image.tag" = "0.1"
+    "image.pullPolicy" = "IfNotPresent"
+    "service.type" = "ClusterIP"
+    "service.port" = "80"
+    "ingress.enabled" = "false"
+    #"ingress.annotations" = ""
+    "ingress.path" = "/"
+    "ingress.hosts" = ["chart-example.local"]
+    "ingress.tls" = []
+    #"resources" = ""
+    #"nodeSelector" = ""
+    #"tolerations" = ""
+    #"affinity" = ""
+    }
   }
-  layer = "services"
+  layer = "applications"
   type  = "base"
   application_branch = "main"
   namespace = var.namespace
