@@ -1,0 +1,15 @@
+name: Delete test gitops repo manually
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "Delete" to confirm'
+        required: true
+
+jobs:
+  delete_repo:
+    if: ${{ github.event.inputs.confirm == 'Delete' }}
+    uses: cloud-native-toolkit/action-workflows/.github/workflows/manual-test-repo-delete.yaml@v1
+    secrets:
+      GIT_ORG: ${{ secrets.GIT_ORG }}
+      GIT_ADMIN_TOKEN: ${{ secrets.GIT_ADMIN_TOKEN }}
