@@ -1,6 +1,6 @@
-name: ""
+name: gitops-watson-nlp
 type: gitops
-description: ""
+description: Module to populate a gitops repo with the resources to provision watson-nlp
 tags:
   - tools
   - gitops
@@ -13,11 +13,11 @@ versions:
       - id: gitops
         refs:
           - source: github.com/cloud-native-toolkit/terraform-tools-gitops.git
-            version: ">= 1.1.0"
+            version: '>= 1.1.0'
       - id: namespace
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
-            version: ">= 1.0.0"
+            version: '>= 1.0.0'
     variables:
       - name: gitops_config
         moduleRef:
@@ -39,3 +39,4 @@ versions:
         moduleRef:
           id: gitops
           output: sealed_secrets_cert
+softwareProvider: ibm
