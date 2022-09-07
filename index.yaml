@@ -1,0 +1,9 @@
+name: gitops-watson-nlp
+type: gitops
+description: Module to populate a gitops repo with the resources to provision watson-nlp
+tags:
+  - tools
+  - gitops
+versions: []
+softwareProvider: ibm
+id: github.com/cloud-native-toolkit/terraform-gitops-watson-nlp
