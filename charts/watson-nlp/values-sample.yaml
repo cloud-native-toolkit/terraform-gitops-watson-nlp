@@ -1,0 +1,34 @@
+# Default values for product-abc.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# serviceType sets the type of the ABC runtime
+serviceType: ClusterIP
+
+components:
+  abcRuntime:
+    name: "product-runtime"
+  
+imagePullSecrets:
+  - name: artifactory-key
+  - name: deleeuw-icr-pull-secret
+
+#containerRegistry: wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com
+#images:
+#  product-abc-container:
+#    repository: watson-nlp-runtime
+#    tag: 1.3.0-rc.19_ubi8_py38
+
+containerRegistry: uk.icr.io/deleeuw-product-abc
+images:
+  product-abc-container:
+    repository: product-abc-container
+    tag: v1
+
+models:
+  - model1:
+    name: model1
+    image: wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com/watson-nlp_ensemble_classification-wf_lang_en_emotion-stock:1.23.0
+  - model2:
+    name: model2
+    image: wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com/watson-nlp_ensemble_classification-wf_lang_en_dummy:1.12.0
