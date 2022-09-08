@@ -123,7 +123,7 @@ versions:
       - name: cluster_type
         description: The cluster type (openshift or kubernetes)
         default: '"openshift"'
-    version: v0.0.3
+    version: v0.0.4
     outputs:
       - name: name
         description: The name of the module
