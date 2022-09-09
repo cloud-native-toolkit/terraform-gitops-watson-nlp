@@ -6,7 +6,7 @@ locals {
   service_url   = "http://${local.name}.${var.namespace}"
   cluster_type = var.cluster_type == "kubernetes" ? "kubernetes" : "openshift"
   values_content = {
-    watson-nlp = {
+    test = {
       "serviceType" = "ClusterIP"
       "components.abcRuntime.name" = "product-runtime"
       "imagePullSecrets" = [{"name" = "artifactory-key"}, {"name" = "deleeuw-icr-pull-secret"}]
