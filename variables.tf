@@ -101,3 +101,8 @@ variable "cluster_type" {
   description = "The cluster type (openshift or kubernetes)"
   default     = "openshift"
 }
+
+variable "runtime_image" {
+  description = "runtime_image"
+  default     = "watson-nlp-runtime:0.16.0_ubi8_py39"
+}

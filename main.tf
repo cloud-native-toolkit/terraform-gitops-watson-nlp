@@ -7,6 +7,7 @@ locals {
   cluster_type = var.cluster_type == "kubernetes" ? "kubernetes" : "openshift"
   values_content = {
     test = {
+      "runtimeImage" = var.runtime_image
       "serviceType" = "ClusterIP"
       "components.abcRuntime.name" = "product-runtime"
       "imagePullSecrets" = [{"name" = "artifactory-key"}, {"name" = "deleeuw-icr-pull-secret"}]
