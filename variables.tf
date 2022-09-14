@@ -108,6 +108,15 @@ variable "runtime_image" {
 }
 
 variable "models" {
-  type    = list
+  type    = list(map(string))
   default = []
+}
+
+variable "resource_tags" {
+  description = "Tags to set for all resources"
+  type        = map(string)
+  default     = {
+    project     = "project-alpha",
+    environment = "dev"
+  }
 }
