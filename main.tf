@@ -11,7 +11,7 @@ locals {
 
   values_content = {
     test = {
-      "componentName" = locals.name
+      "componentName" = "watson-nlp"
       "serviceType" = "ClusterIP"
       "registries" = var.registries
       "imagePullSecrets" = var.imagePullSecrets
