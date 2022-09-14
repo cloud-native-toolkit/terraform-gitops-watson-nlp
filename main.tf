@@ -5,6 +5,10 @@ locals {
   #yaml_dir      = "${path.cwd}/.tmp/${local.name}"
   service_url   = "http://${local.name}.${var.namespace}"
   cluster_type = var.cluster_type == "kubernetes" ? "kubernetes" : "openshift"
+
+  models = var.models
+
+
   values_content = {
     test = {
       "runtimeImage" = var.runtime_image
@@ -14,7 +18,7 @@ locals {
       "containerRegistry" = "uk.icr.io/deleeuw-product-abc"
       "images.product-abc-container.repository" = "product-abc-container"
       "images.product-abc-container.tag" = "v1"
-      "models" = [{"model1" = "", "name" = "model1", "image" = "wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com/watson-nlp_ensemble_classification-wf_lang_en_emotion-stock:1.23.0"}, {"model2" = "", "name" = "model2", "image" = "wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com/watson-nlp_ensemble_classification-wf_lang_en_dummy:1.12.0"}]
+      "models" = var.models
     }
   }
   layer = "services"

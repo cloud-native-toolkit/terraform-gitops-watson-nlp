@@ -106,3 +106,8 @@ variable "runtime_image" {
   description = "runtime_image"
   default     = "watson-nlp-runtime:0.16.0_ubi8_py39"
 }
+
+variable "models" {
+  type    = list
+  default = []
+}
