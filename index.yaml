@@ -138,7 +138,7 @@ versions:
       - name: registries
         type: list(map(string))
         default: '[]'
-    version: v0.0.9
+    version: v0.0.10
     outputs:
       - name: name
         description: The name of the module
