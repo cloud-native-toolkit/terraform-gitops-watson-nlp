@@ -102,12 +102,27 @@ variable "cluster_type" {
   default     = "openshift"
 }
 
+variable "runtime_registry" {
+  description = "runtime_registry"
+  default     = "wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com"
+}
+
 variable "runtime_image" {
   description = "runtime_image"
   default     = "watson-nlp-runtime:0.16.0_ubi8_py39"
 }
 
 variable "models" {
+  type    = list(map(string))
+  default = []
+}
+
+variable "imagePullSecrets" {
+  type    = list(string)
+  default = []
+}
+
+variable "registries" {
   type    = list(map(string))
   default = []
 }

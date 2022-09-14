@@ -1,14 +1,14 @@
 componentName: watson-nlp
 serviceType: ClusterIP
 
-imagePullSecrets:
-  - name: artifactory-key
-
 registries:
-  watson:
+  - name: watson
     url: wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com
-#  my-reg:
-#    url: uk.icr.io/deleeuw-watson
+# - my-reg:
+#   url: uk.icr.io/deleeuw-watson
+
+imagePullSecrets:
+  - artifactory-key
 
 runtime:
   registry: watson
@@ -16,8 +16,6 @@ runtime:
 
 models:
   - registry: watson
-    image: watson-nlp_ensemble_classification-wf_lang_en_emotion-stock:1.23.0
-  - registry: watson
-    image: watson-nlp_ensemble_classification-wf_lang_en_dummy:1.12.0
- # - registry: my-reg
- #   image: mynamespace/mymodel:latest 
+    image: watson-nlp_syntax_izumo_lang_en_stock:0.0.4
+# - registry: my-reg
+#   image: mynamespace/mymodel:latest 

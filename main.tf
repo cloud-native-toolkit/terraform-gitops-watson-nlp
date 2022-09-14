@@ -11,13 +11,14 @@ locals {
 
   values_content = {
     test = {
-      "runtimeImage" = var.runtime_image
+      "componentName" = locals.name
       "serviceType" = "ClusterIP"
-      "components.abcRuntime.name" = "product-runtime"
-      "imagePullSecrets" = [{"name" = "artifactory-key"}, {"name" = "deleeuw-icr-pull-secret"}]
-      "containerRegistry" = "uk.icr.io/deleeuw-product-abc"
-      "images.product-abc-container.repository" = "product-abc-container"
-      "images.product-abc-container.tag" = "v1"
+      "registries" = var.registries
+      "imagePullSecrets" = var.imagePullSecrets
+      "runtime" = {
+        "registry": var.runtime_registry
+        "image": var.runtime_image
+      }
       "models" = var.models
     }
   }
