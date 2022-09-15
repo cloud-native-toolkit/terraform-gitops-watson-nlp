@@ -12,7 +12,7 @@ imagePullSecrets:
 
 runtime:
   registry: watson
-  image: watson-nlp-runtime:0.16.0_ubi8_py39
+  image: watson-nlp-runtime:0.17.0_ubi8_py39
 
 models:
   - registry: watson
