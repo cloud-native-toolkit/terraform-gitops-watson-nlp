@@ -29,11 +29,12 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-module gitops {
-  source = "github.com/cloud-native-toolkit/terraform-tools-gitops.git"
-}
+#module gitops {
+#  source = "github.com/cloud-native-toolkit/terraform-tools-gitops.git"
+#}
 
 module "gitops_pull_secret" {
+   depends_on = ["gitops"]
    source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret.git"
    count = length(var.registryUserNames)
    gitops_config = module.gitops.gitops_config
