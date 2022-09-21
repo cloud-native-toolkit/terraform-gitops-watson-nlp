@@ -18,6 +18,14 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
             version: '>= 1.0.0'
+      - id: gitopspullsecret
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-gitops-pull-secret
+            version: '>= 1.2.1'
+      - id: sealedsecretcert
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert
+            version: '>= 1.0.1'      
     variables:
       - name: gitops_config
         moduleRef:

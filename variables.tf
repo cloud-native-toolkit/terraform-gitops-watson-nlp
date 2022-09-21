@@ -126,3 +126,8 @@ variable "registries" {
   type    = list(map(string))
   default = []
 }
+
+variable "registryUserNames" {
+  type    = list(map(string))
+  default = []
+}
