@@ -44,8 +44,8 @@ module "gitops_pull_secret" {
    kubeseal_cert = var.kubeseal_cert
    docker_server = var.registries[count.index].url
    docker_username = var.registryUserNames[count.index].userName
-   #docker_password = tostring(var.registry_credentials[count.index])
-   docker_password = var.${count.index}_registry_credentials
+   docker_password = tostring(var.registry_credentials[count.index])
+   #docker_password = var.${count.index}_registry_credentials
    secret_name = var.imagePullSecrets[count.index]
 }
 
