@@ -34,14 +34,14 @@ locals {
 #}
 
 module "gitops_pull_secret" {
-   depends_on = ["gitops"]
+#   depends_on = [module.gitops]
    source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret.git"
    count = length(var.registryUserNames)
-   gitops_config = module.gitops.gitops_config
-   git_credentials = module.gitops.git_credentials
-   server_name = module.gitops.server_name
-   namespace = module.gitops_namespace.name
-   kubeseal_cert = module.gitops.sealed_secrets_cert
+   gitops_config = var.gitops_config
+   git_credentials = var.git_credentials
+   server_name = var.server_name
+   namespace = var.gitops_namespace.name
+   kubeseal_cert = var.sealed_secrets_cert
    docker_server = var.registries[count.index].url
    docker_username = var.registryUserNames[count.index].userName
    docker_password = "hardcodedfornow"
