@@ -131,3 +131,11 @@ variable "registryUserNames" {
   type    = list(map(string))
   default = []
 }
+
+
+variable "registry_credentials" {
+  type    = list(map(string))
+  default = []
+}
+
+
