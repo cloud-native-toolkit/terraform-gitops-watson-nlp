@@ -40,8 +40,8 @@ module "gitops_pull_secret" {
    gitops_config = var.gitops_config
    git_credentials = var.git_credentials
    server_name = var.server_name
-   namespace = var.gitops_namespace.name
-   kubeseal_cert = var.sealed_secrets_cert
+   namespace = var.namespace
+   kubeseal_cert = var.kubeseal_cert
    docker_server = var.registries[count.index].url
    docker_username = var.registryUserNames[count.index].userName
    docker_password = "hardcodedfornow"
