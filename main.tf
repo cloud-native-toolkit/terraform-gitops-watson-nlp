@@ -36,7 +36,7 @@ locals {
 #credMap = var.registry_credentials
 #credMapStr = tostring(credMap)
 
-credentialsList = split(",", var.registry_credentials)
+#credentialsList = split(",", var.registry_credentials)
 
 module "gitops_pull_secret" {
 #   depends_on = [module.gitops]
@@ -49,7 +49,7 @@ module "gitops_pull_secret" {
    kubeseal_cert = var.kubeseal_cert
    docker_server = var.registries[count.index].url
    docker_username = var.registryUserNames[count.index].userName
-   docker_password = credentialsList[count.index]
+   docker_password = "hardcodedfornow"
    secret_name = var.imagePullSecrets[count.index]
 }
 
