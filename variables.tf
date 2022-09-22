@@ -134,7 +134,7 @@ variable "registryUserNames" {
 
 
 variable "registry_credentials" {
-  type    = list(map(string))
+  type    = list(string)
   default = []
 }
 
