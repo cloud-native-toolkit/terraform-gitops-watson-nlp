@@ -132,10 +132,9 @@ variable "registryUserNames" {
   default = []
 }
 
-
-#variable "registry_credentials" {
-#  type    = list(string)
-#  default = []
-#}
+variable "registry_credentials" {
+  type    = string
+  default = ""
+}
 
 
