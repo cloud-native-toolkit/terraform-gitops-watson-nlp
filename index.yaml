@@ -155,7 +155,7 @@ versions:
       - name: gitops_repo_token
         type: string
         default: ''
-    version: v0.0.39
+    version: v0.0.40
     outputs:
       - name: name
         description: The name of the module
