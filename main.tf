@@ -50,7 +50,7 @@ module "gitops_pull_secret" {
    docker_server = var.registries[count.index].url
    docker_username = var.registryUserNames[count.index].userName
    #docker_password = var.registry_credentials[count.index]
-   docker_password = element(split(",", var.registry_credentials),count.index)
+   docker_password = element(split(",", "foo,bar"),count.index)
    secret_name = var.imagePullSecrets[count.index]
 }
 
