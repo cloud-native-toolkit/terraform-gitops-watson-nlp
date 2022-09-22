@@ -36,7 +36,7 @@ locals {
 #credMap = var.registry_credentials
 #credMapStr = tostring(credMap)
 
-#credentialsList = split(",", var.registry_credentials)
+credentialsList = split(",", var.registry_credentials)
 
 module "gitops_pull_secret" {
 #   depends_on = [module.gitops]
