@@ -150,12 +150,9 @@ versions:
         type: list(map(string))
         default: '[]'
       - name: registry_credentials
-        type: string
-        default: ''
-      - name: gitops_repo_token
-        type: string
-        default: ''
-    version: v0.0.40
+        type: list(string)
+        default: []
+    version: v0.0.41
     outputs:
       - name: name
         description: The name of the module
