@@ -133,12 +133,7 @@ variable "registryUserNames" {
 }
 
 variable "registry_credentials" {
-  type    = string
-  default = ""
-}
-
-variable "gitops_repo_token" {
-  type    = string
-  default = ""
+  type    = list(string)
+  default = []
 }
 
