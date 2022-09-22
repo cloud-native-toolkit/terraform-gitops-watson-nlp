@@ -152,7 +152,7 @@ versions:
       - name: registry_credentials
         type: list(string)
         default: []
-    version: v0.0.32
+    version: v0.0.33
     outputs:
       - name: name
         description: The name of the module
