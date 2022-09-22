@@ -137,4 +137,8 @@ variable "registry_credentials" {
   default = ""
 }
 
+variable "gitops_repo_token" {
+  type    = string
+  default = ""
+}
 
