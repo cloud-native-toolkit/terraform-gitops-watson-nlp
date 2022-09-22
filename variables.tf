@@ -133,7 +133,7 @@ variable "registryUserNames" {
 }
 
 variable "registry_credentials" {
-  type    = list(string)
-  default = []
+  type    = string
+  default = ""
 }
 
