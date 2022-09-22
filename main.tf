@@ -29,17 +29,7 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-#module gitops {
-#  source = "github.com/cloud-native-toolkit/terraform-tools-gitops.git"
-#}
-
-#credMap = var.registry_credentials
-#credMapStr = tostring(credMap)
-
-#credentialsList = split(",", var.registry_credentials)
-
 module "gitops_pull_secret" {
-#   depends_on = [module.gitops]
    source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret.git"
    count = length(var.registryUserNames)
    gitops_config = var.gitops_config
@@ -49,8 +39,8 @@ module "gitops_pull_secret" {
    kubeseal_cert = var.kubeseal_cert
    docker_server = var.registries[count.index].url
    docker_username = var.registryUserNames[count.index].userName
-   #docker_password = var.registry_credentials[count.index]
-   docker_password = element(split("-", var.registry_credentials),count.index)
+   docker_password = var.registry_credentials[count.index]
+   #docker_password = element(split("-", var.registry_credentials),count.index)
    secret_name = var.imagePullSecrets[count.index]
 }
 
