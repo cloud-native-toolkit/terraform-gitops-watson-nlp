@@ -7,5 +7,5 @@ name: watson-nlp
 
 dependencies:
   - name: test
-    version: v0.0.5
+    version: v0.0.6
     repository: https://raw.githubusercontent.com/nheidloff/test-charts/main/index.yaml
