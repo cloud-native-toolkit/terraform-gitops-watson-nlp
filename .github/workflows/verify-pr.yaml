@@ -17,9 +17,6 @@ jobs:
       GIT_ORG: ${{ secrets.GIT_ORG }}
       AWS_CLUSTER_USERNAME: ${{ secrets.AWS_CLUSTER_USERNAME }}
       AWS_CLUSTER_PASSWORD: ${{ secrets.AWS_CLUSTER_PASSWORD }}
-      AZURE_CLUSTER_USERNAME: ${{ secrets.AZURE_CLUSTER_USERNAME }}
-      AZURE_CLUSTER_PASSWORD: ${{ secrets.AZURE_CLUSTER_PASSWORD }}
-      AZURE_CLUSTER_CA_CERT: ${{ secrets.AZURE_CLUSTER_CA_CERT }}    # The certificate needs to be base64 encoded with no carriage returns in the secret
       IBMCLOUD_API_KEY: ${{ secrets.IBMCLOUD_API_KEY }}
       GIT_ADMIN_USERNAME: ${{ secrets.GIT_ADMIN_USERNAME }}
       GIT_ADMIN_TOKEN: ${{ secrets.GIT_ADMIN_TOKEN }}
