@@ -10,7 +10,7 @@ on:
 jobs:
   verify:
     if: ${{ !contains( github.event.pull_request.labels.*.name, 'skip ci' ) }}
-    uses: cloud-native-toolkit/action-workflows/.github/workflows/verify-gitops-module-multicloud.yaml@v1
+    uses: cloud-native-toolkit/action-workflows/.github/workflows/verify-gitops-module.yaml@v1
     with:
       testcase: ocp4_latest_gitops
     secrets:
