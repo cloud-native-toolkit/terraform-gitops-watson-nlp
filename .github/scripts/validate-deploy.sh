@@ -45,14 +45,12 @@ find . -name "*"
 set -e
 
 validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values.yaml"
-#validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values-${SERVER_NAME}.yaml"
-validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/deployment.yaml"
-validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/service.yaml"
+#validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/deployment.yaml"
+#validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/service.yaml"
 
 check_k8s_namespace "${NAMESPACE}"
 
-check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-watson-nlp"
-check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-watson-nlp"
-#kubectl rollout status -n ${var.releases_namespace} deployment/swaggereditor
+#check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-watson-nlp"
+#check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-watson-nlp"
 cd ..
 rm -rf .testrepo
