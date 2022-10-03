@@ -10,16 +10,13 @@ on:
 jobs:
   verify:
     if: ${{ !contains( github.event.pull_request.labels.*.name, 'skip ci' ) }}
-    uses: cloud-native-toolkit/action-workflows/.github/workflows/verify-gitops-module-multicloud.yaml@v1
+    uses: cloud-native-toolkit/action-workflows/.github/workflows/verify-gitops-module.yaml@v1
     with:
       testcase: ocp4_latest_gitops
     secrets:
       GIT_ORG: ${{ secrets.GIT_ORG }}
       AWS_CLUSTER_USERNAME: ${{ secrets.AWS_CLUSTER_USERNAME }}
       AWS_CLUSTER_PASSWORD: ${{ secrets.AWS_CLUSTER_PASSWORD }}
-      AZURE_CLUSTER_USERNAME: ${{ secrets.AZURE_CLUSTER_USERNAME }}
-      AZURE_CLUSTER_PASSWORD: ${{ secrets.AZURE_CLUSTER_PASSWORD }}
-      AZURE_CLUSTER_CA_CERT: ${{ secrets.AZURE_CLUSTER_CA_CERT }} # The certificate needs to be base64 encoded with no carriage returns in the secret
       IBMCLOUD_API_KEY: ${{ secrets.IBMCLOUD_API_KEY }}
       GIT_ADMIN_USERNAME: ${{ secrets.GIT_ADMIN_USERNAME }}
       GIT_ADMIN_TOKEN: ${{ secrets.GIT_ADMIN_TOKEN }}
