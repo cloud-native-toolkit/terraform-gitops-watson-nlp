@@ -26,13 +26,31 @@ if ! command -v ibmcloud 1> /dev/null 2> /dev/null; then
   exit 1
 fi
 
+echo "******************************"
+echo " show gitops-output.json content"
+echo "******************************"
+echo ""
+echo "******************************"
+ROOT_PATH=$(pwd)
+echo "ROOT_PATH: $ROOT_PATH"
+cat $ROOT_PATH/gitops-output.json
+echo ""
+echo "******************************"
+
 export KUBECONFIG=$(cat .kubeconfig)
+
 NAMESPACE=$(cat .namespace)
-COMPONENT_NAME=$(jq -r '.name // "watson-nlp"' gitops-output.json)
+echo "NAMESPACE: $NAMESPACE"
+COMPONENT_NAME=$(jq -r '.name // "terraform-gitops-watson-nlp"' gitops-output.json)
+echo "COMPONENT_NAME: $COMPONENT_NAME"
 BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
+echo "BRANCH: $BRANCH"
 SERVER_NAME=$(jq -r '.server_name // "default"' gitops-output.json)
+echo "SERVER_NAME: $SERVER_NAME"
 LAYER=$(jq -r '.layer_dir // "2-services"' gitops-output.json)
+echo "LAYER: $LAYER"
 TYPE=$(jq -r '.type // "base"' gitops-output.json)
+echo "TYPE: $TYPE"
 
 mkdir -p .testrepo
 
