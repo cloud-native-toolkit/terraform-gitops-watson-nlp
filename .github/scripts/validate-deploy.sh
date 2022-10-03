@@ -68,5 +68,6 @@ validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${
 check_k8s_namespace "${NAMESPACE}"
 #check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-watson-nlp"
 #check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-watson-nlp"
+check_k8s_pod "${NAMESPACE}" "watson-nlp"
 cd ..
 rm -rf .testrepo
