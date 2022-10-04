@@ -12,6 +12,7 @@ locals {
   values_content = {
     test = {
       "componentName" = "watson-nlp"
+      "acceptLicense" = var.accept_license
       "serviceType" = "ClusterIP"
       "registries" = var.registries
       "imagePullSecrets" = var.imagePullSecrets

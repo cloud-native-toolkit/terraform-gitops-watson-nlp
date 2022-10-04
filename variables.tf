@@ -137,3 +137,8 @@ variable "registry_credentials" {
   default = ""
 }
 
+variable "accept_license" {
+  type        = bool
+  description = "Flag indicating if the watson-runtime license should be accepted"
+  default     = false
+}
