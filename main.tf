@@ -4,7 +4,6 @@ locals {
   service_url   = "http://${local.name}.${var.namespace}"
   models = var.models
 
-
   values_content = {
     "componentName" = "watson-nlp"
     "acceptLicense" = var.accept_license
@@ -19,6 +18,7 @@ locals {
   }
   layer = "services"
   type  = "base"
+  application_branch = "main"
   namespace = var.namespace
   layer_config = var.gitops_config[local.layer]
 }
