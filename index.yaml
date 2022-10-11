@@ -9,6 +9,9 @@ versions:
       - kubernetes
       - ocp3
       - ocp4
+    providers:
+      - name: gitops
+        source: cloud-native-toolkit/gitops
     dependencies:
       - id: gitops
         refs:
@@ -156,7 +159,7 @@ versions:
         type: bool
         description: Flag indicating if the watson-runtime license should be accepted
         default: false
-    version: v0.0.50
+    version: v0.0.51
     outputs:
       - name: name
         description: The name of the module
