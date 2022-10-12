@@ -49,7 +49,7 @@ resource gitops_pull_secret imagePullSecrets {
   kubeseal_cert = var.kubeseal_cert
   registry_server = var.registries[count.index].url
   registry_username = var.registryUserNames[count.index].userName
-  registry_password = element(split("-", var.registry_credentials),count.index)
+  registry_password = element(split(",", var.registry_credentials),count.index)
   secret_name = var.imagePullSecrets[count.index]
 }
 
