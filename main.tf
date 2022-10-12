@@ -37,7 +37,7 @@ locals {
 #   secret_name = var.imagePullSecrets[count.index]
 #}
 
-resource gitops_pull_secret test {
+resource gitops_pull_secret imagePullSecrets {
   count = length(var.registryUserNames)
   name = var.imagePullSecrets[count.index]
   namespace = var.namespace

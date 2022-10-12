@@ -57,9 +57,13 @@ Registry lookup
   {{- $root := index . 0 }}
   {{- $registryName := index . 1 }}
   {{- $image := index . 2 }}
+  {{- $matchFlag := "false" }}
   {{- range $k, $v := $root.Values.registries }}
     {{- if eq $v.name $registryName}}
-      {{ print $v.url}}/{{print $image}}
+      {{- if eq $matchFlag "false" }}
+        {{ print $v.url}}/{{print $image}}
+        {{- $matchFlag = "true" }}
+      {{- end }}  
     {{- end }}
   {{- end }}
 {{- end }}
