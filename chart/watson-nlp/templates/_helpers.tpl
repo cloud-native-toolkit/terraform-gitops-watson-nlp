@@ -60,7 +60,6 @@ Registry lookup
   {{- range $k, $v := $root.Values.registries }}
     {{- if eq $v.name $registryName}}
       {{ print $v.url}}/{{print $image}}
-      {{ break }}
     {{- end }}
   {{- end }}
 {{- end }}
