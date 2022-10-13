@@ -1,11 +1,11 @@
 locals {
   name          = "watson-nlp"
-  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/watson"
+  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
   service_url   = "http://${local.name}.${var.namespace}"
   models = var.models
 
   values_content = {
-    "componentName" = "-nlp"
+    "componentName" = "-embedded"
     "acceptLicense" = var.accept_license
     "serviceType" = "ClusterIP"
     "registries" = var.registries
