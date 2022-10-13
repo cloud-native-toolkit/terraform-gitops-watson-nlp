@@ -88,8 +88,7 @@ echo "******************************"
 echo "******************************"
 echo " TestCase 4: validate service check_k8s_resource"
 echo "******************************"
-#To be enabled after GA
-#check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-embedded"
+check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-embedded"
 
 cd ..
 rm -rf .testrepo
