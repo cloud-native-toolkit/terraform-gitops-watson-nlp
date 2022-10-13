@@ -48,4 +48,4 @@ module "terraform-gitops-watson-nlp" {
    registry_credentials = 
 }
 ```
-Test
+Test2
