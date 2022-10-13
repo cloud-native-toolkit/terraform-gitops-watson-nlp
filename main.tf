@@ -5,7 +5,7 @@ locals {
   models = var.models
 
   values_content = {
-    "componentName" = "-embedded"
+    "componentName" = "embedded"
     "acceptLicense" = var.accept_license
     "serviceType" = "ClusterIP"
     "registries" = var.registries
