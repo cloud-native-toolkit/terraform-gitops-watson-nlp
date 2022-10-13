@@ -1,17 +1,3 @@
 # Default values for chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-acceptLicense: true
-componentName: watson-nlp
-imagePullSecrets:
-  - artifactory-key
-models:
-  - image: watson-nlp_syntax_izumo_lang_en_stock:1.0.0
-    registry: artifactory
-registries:
-  - name: artifactory
-    url: wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com
-runtime:
-  image: watson-nlp-runtime:1.0.0
-  registry: artifactory
-serviceType: ClusterIP
