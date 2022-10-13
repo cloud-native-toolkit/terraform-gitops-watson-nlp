@@ -88,7 +88,7 @@ echo "******************************"
 echo "******************************"
 echo " TestCase 4: validate service check_k8s_resource"
 echo "******************************"
-check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-watson-nlp"
+check_k8s_resource "${NAMESPACE}" "service" "watson-nlp"
 
 cd ..
 rm -rf .testrepo

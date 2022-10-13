@@ -5,7 +5,7 @@ locals {
   models = var.models
 
   values_content = {
-    "componentName" = "nlp"
+    "componentName" = "-nlp"
     "acceptLicense" = var.accept_license
     "serviceType" = "ClusterIP"
     "registries" = var.registries
