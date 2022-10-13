@@ -1,11 +1,11 @@
 locals {
   name          = "watson-nlp"
-  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
+  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/watson"
   service_url   = "http://${local.name}.${var.namespace}"
   models = var.models
 
   values_content = {
-    "componentName" = "watson-nlp"
+    "componentName" = "nlp"
     "acceptLicense" = var.accept_license
     "serviceType" = "ClusterIP"
     "registries" = var.registries
@@ -23,20 +23,6 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-#module "gitops_pull_secret" {
-#   source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret.git"
-#   count = length(var.registryUserNames)
-#   gitops_config = var.gitops_config
-#   git_credentials = var.git_credentials
-#   server_name = var.server_name
-#   namespace = var.namespace
-#   kubeseal_cert = var.kubeseal_cert
-#   docker_server = var.registries[count.index].url
-#   docker_username = var.registryUserNames[count.index].userName
-#   docker_password = element(split("-", var.registry_credentials),count.index)
-#   secret_name = var.imagePullSecrets[count.index]
-#}
-
 resource gitops_pull_secret imagePullSecrets {
   count = length(var.registryUserNames)
   name = var.imagePullSecrets[count.index]
@@ -52,8 +38,6 @@ resource gitops_pull_secret imagePullSecrets {
   registry_password = element(split(",", var.registry_credentials),count.index)
   secret_name = var.imagePullSecrets[count.index]
 }
-
-
 
 resource null_resource create_yaml {
   provisioner "local-exec" {

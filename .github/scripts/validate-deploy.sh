@@ -63,7 +63,7 @@ find . -name "*"
 set -e
 
 echo "******************************"
-echo " TestCase 1: validate deployment validate_gitops_content"
+echo " TestCase 1: validate helm chart validate_gitops_content"
 echo "******************************"
 echo ""
 validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values.yaml"
@@ -71,7 +71,7 @@ validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${
 #validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/service.yaml"
 
 echo "******************************"
-echo " TestCase 2: validate deployment check_k8s_namespace"
+echo " TestCase 2: validate namespace check_k8s_namespace"
 echo "******************************"
 echo ""
 check_k8s_namespace "${NAMESPACE}"
@@ -82,13 +82,13 @@ sleep 2m
 echo "******************************"
 echo " TestCase 3: validate deployment check_k8s_resource"
 echo "******************************"
-check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-watson-nlp"
+#To be enabled after GA
+#check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-watson-nlp"
 
 echo "******************************"
 echo " TestCase 4: validate service check_k8s_resource"
 echo "******************************"
 check_k8s_resource "${NAMESPACE}" "service" "watson-nlp-watson-nlp"
 
-#check_k8s_pod "${NAMESPACE}" "watson-nlp"
 cd ..
 rm -rf .testrepo
