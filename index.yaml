@@ -167,7 +167,7 @@ versions:
         type: bool
         description: Flag indicating if the watson-runtime license should be accepted
         default: false
-    version: v0.0.78
+    version: v0.0.79
     outputs:
       - name: name
         description: The name of the module
