@@ -141,7 +141,7 @@ versions:
             }]
       - name: imagePullSecrets
         type: list(string)
-        default: ''
+        default: []
       - name: registries
         type: list(map(string))
         default: |-
@@ -159,7 +159,7 @@ versions:
         type: bool
         description: Flag indicating if the watson-runtime license should be accepted
         default: false
-    version: v0.0.70
+    version: v0.0.71
     outputs:
       - name: name
         description: The name of the module
