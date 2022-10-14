@@ -123,7 +123,7 @@ variable "models" {
 variable "imagePullSecrets" {
   type    = list(string)
   /*default = ["artifactory-key"]*/
-  default = ""
+  default = []
 }
 
 variable "registries" {
