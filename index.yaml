@@ -141,7 +141,8 @@ versions:
             }]
       - name: imagePullSecrets
         type: list(string)
-        default: []
+        default:
+          - artifactory-key
       - name: registries
         type: list(map(string))
         default: |-
@@ -151,15 +152,18 @@ versions:
             }]
       - name: registryUserNames
         type: list(map(string))
-        default: '[]'
+        default: |-
+          [{
+              userName = "user@domain.com"
+            }]
       - name: registry_credentials
         type: string
-        default: ''
+        default: registrycredential
       - name: accept_license
         type: bool
         description: Flag indicating if the watson-runtime license should be accepted
         default: false
-    version: v0.0.72
+    version: v0.0.73
     outputs:
       - name: name
         description: The name of the module
