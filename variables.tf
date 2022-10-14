@@ -122,7 +122,8 @@ variable "models" {
 
 variable "imagePullSecrets" {
   type    = list(string)
-  default = ["artifactory-key"]
+  /*default = ["artifactory-key"]*/
+  default = ""
 }
 
 variable "registries" {
@@ -135,14 +136,16 @@ variable "registries" {
 
 variable "registryUserNames" {
   type    = list(map(string))
-  default = [{
+  /*default = [{
     userName = "user@domain.com"
-  }]
+  }]*/
+  default = []
 }
 
 variable "registry_credentials" {
   type    = string
-  default = "registrycredential"
+  /*default = "registrycredential"*/
+  default = ""
 }
 
 variable "accept_license" {
