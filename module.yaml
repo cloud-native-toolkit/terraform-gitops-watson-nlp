@@ -20,7 +20,7 @@ versions:
       - id: namespace
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
-            version: '>= 1.0.0'   
+            version: '= 1.13.1'   
     variables:
       - name: gitops_config
         moduleRef:
