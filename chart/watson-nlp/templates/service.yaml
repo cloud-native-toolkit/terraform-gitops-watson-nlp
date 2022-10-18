@@ -6,7 +6,7 @@ metadata:
   name: {{ .Release.Name }}-{{ $compName }}
 spec:
   type: {{ .Values.serviceType }}
-  selector: {{- include "test.selectorLabels" (list . $compName) | nindent 4 }}
+  selector: {{- include "watsonnlp.selectorLabels" (list . $compName) | nindent 4 }}
   ports:
   - port: 8080
     protocol: TCP

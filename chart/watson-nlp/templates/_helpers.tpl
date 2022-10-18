@@ -1,7 +1,7 @@
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "test.chart" -}}
+{{- define "watsonnlp.chart" -}}
   {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "test.fullname" -}}
+{{- define "watsonnlp.fullname" -}}
   {{- if .Values.fullnameOverride }}
     {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
   {{- else }}
@@ -26,12 +26,12 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Common labels
 */}}
-{{- define "test.labels" -}}
+{{- define "watsonnlp.labels" -}}
   {{- $params := . -}}
   {{- $root := index $params 0 -}}
   {{- $compName := index $params 1 -}}
-helm.sh/chart: {{ include "test.chart" $root }}
-{{ include "test.selectorLabels" (list $root $compName) }}
+helm.sh/chart: {{ include "watsonnlp.chart" $root }}
+{{ include "watsonnlp.selectorLabels" (list $root $compName) }}
 {{- if $root.Chart.AppVersion }}
 app.kubernetes.io/version: {{ $root.Chart.AppVersion | quote }}
 {{- end }}
@@ -41,11 +41,11 @@ app.kubernetes.io/managed-by: {{ $root.Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "test.selectorLabels" -}}
+{{- define "watsonnlp.selectorLabels" -}}
   {{- $params := . -}}
   {{- $root := index $params 0 -}}
   {{- $compName := index $params 1 -}}
-app.kubernetes.io/name: {{ include "test.fullname" $root }}
+app.kubernetes.io/name: {{ include "watsonnlp.fullname" $root }}
 app.kubernetes.io/component: {{ $compName }}
 app.kubernetes.io/instance: {{ $root.Release.Name }}
 {{- end }}
@@ -53,7 +53,7 @@ app.kubernetes.io/instance: {{ $root.Release.Name }}
 {{/*
 Registry lookup
 */}}
-{{- define "test.registries" }}
+{{- define "watsonnlp.registries" }}
   {{- $root := index . 0 }}
   {{- $registryName := index . 1 }}
   {{- $image := index . 2 }}

@@ -5,12 +5,12 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-{{ $compName }}
   labels:
-    {{- include "test.labels" (list . $compName) | nindent 4 }}
+    {{- include "watsonnlp.labels" (list . $compName) | nindent 4 }}
 spec:
   #replicas: 1 is the default, let's not use it and scale manually, so that kubectl apply does not overwrite this
   selector:
     matchLabels:
-      {{- include "test.selectorLabels" (list . $compName) | nindent 6 }}
+      {{- include "watsonnlp.selectorLabels" (list . $compName) | nindent 6 }}
   progressDeadlineSeconds: 1800
   strategy:
     type: RollingUpdate
@@ -24,7 +24,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "test.selectorLabels" (list . $compName) | nindent 8 }}
+        {{- include "watsonnlp.selectorLabels" (list . $compName) | nindent 8 }}
     spec:
       volumes:  
         - name: models
@@ -40,7 +40,7 @@ spec:
       {{- $registryName := $model.registry }}
       {{- $image := $model.image }}
       - name: model-{{ $index }}
-        image: {{- include "test.registries" (list $ $registryName $image) | trim | indent 1}}
+        image: {{- include "watsonnlp.registries" (list $ $registryName $image) | trim | indent 1}}
         volumeMounts:
           - name: models
             mountPath: /app/models      
@@ -52,10 +52,10 @@ spec:
       {{- end }}
       {{- end }}
       containers:
-      - name: product-abc
+      - name: watson-nlp
         {{- $registryName := .Values.runtime.registry }}
         {{- $image := .Values.runtime.image }}
-        image: {{- include "test.registries" (list $ $registryName $image) | trim | indent 1}}
+        image: {{- include "watsonnlp.registries" (list $ $registryName $image) | trim | indent 1}}
         ports:
           - containerPort: 8080
           - containerPort: 8085
