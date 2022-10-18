@@ -167,6 +167,182 @@ versions:
         type: bool
         description: Flag indicating if the watson-runtime license should be accepted
         default: false
+    version: v0.0.82
+    outputs:
+      - name: name
+        description: The name of the module
+      - name: branch
+        description: The branch where the module config has been placed
+      - name: namespace
+        description: The namespace where the module will be deployed
+      - name: server_name
+        description: The server where the module will be deployed
+      - name: layer
+        description: The layer where the module is deployed
+      - name: type
+        description: The type of module where the module is deployed
+  - platforms:
+      - kubernetes
+      - ocp3
+      - ocp4
+    providers:
+      - name: gitops
+        source: cloud-native-toolkit/gitops
+    dependencies:
+      - id: gitops
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-tools-gitops.git
+            version: '>= 1.1.0'
+      - id: namespace
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
+            version: '>= 1.0.0'
+      - id: setup_clis
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-clis.git
+            version: '>= 1.0.0'
+    variables:
+      - name: gitops_config
+        type: |-
+          object({
+              boostrap = object({
+                argocd-config = object({
+                  project = string
+                  repo = string
+                  url = string
+                  path = string
+                })
+              })
+              infrastructure = object({
+                argocd-config = object({
+                  project = string
+                  repo = string
+                  url = string
+                  path = string
+                })
+                payload = object({
+                  repo = string
+                  url = string
+                  path = string
+                })
+              })
+              services = object({
+                argocd-config = object({
+                  project = string
+                  repo = string
+                  url = string
+                  path = string
+                })
+                payload = object({
+                  repo = string
+                  url = string
+                  path = string
+                })
+              })
+              applications = object({
+                argocd-config = object({
+                  project = string
+                  repo = string
+                  url = string
+                  path = string
+                })
+                payload = object({
+                  repo = string
+                  url = string
+                  path = string
+                })
+              })
+            })
+        description: Config information regarding the gitops repo structure
+        moduleRef:
+          id: gitops
+          output: gitops_config
+      - name: git_credentials
+        type: |-
+          list(object({
+              repo = string
+              url = string
+              username = string
+              token = string
+            }))
+        description: The credentials for the gitops repo(s)
+        sensitive: true
+        moduleRef:
+          id: gitops
+          output: git_credentials
+      - name: namespace
+        type: string
+        description: The namespace where the application should be deployed
+        moduleRef:
+          id: namespace
+          output: name
+      - name: kubeseal_cert
+        type: string
+        description: The certificate/public key used to encrypt the sealed secrets
+        default: ''
+        moduleRef:
+          id: gitops
+          output: sealed_secrets_cert
+      - name: server_name
+        type: string
+        description: The name of the server
+        default: default
+        moduleRef:
+          id: gitops
+          output: server_name
+      - name: enable_sso
+        type: bool
+        description: >-
+          Flag indicating if oauth should be applied (only available for
+          OpenShift)
+        default: true
+      - name: tls_secret_name
+        description: The name of the secret containing the tls certificate values
+        default: '""'
+      - name: cluster_ingress_hostname
+        type: string
+        description: Ingress hostname of the cluster.
+        default: ''
+      - name: cluster_type
+        description: The cluster type (openshift or kubernetes)
+        default: '"openshift"'
+      - name: runtime_registry
+        description: runtime_registry
+        default: '"artifactory"'
+      - name: runtime_image
+        description: runtime_image
+        default: '"watson-nlp-runtime:1.0.0"'
+      - name: models
+        type: list(map(string))
+        default: |-
+          [{
+              registry = "artifactory"
+              image = "watson-nlp_syntax_izumo_lang_en_stock:1.0.0"
+            }]
+      - name: imagePullSecrets
+        type: list(string)
+        default:
+          - artifactory-key
+      - name: registries
+        type: list(map(string))
+        default: |-
+          [{
+              name = "artifactory"
+              url = "wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com"
+            }]
+      - name: registryUserNames
+        type: list(map(string))
+        default: |-
+          [{
+              userName = "user@domain.com"
+            }]
+      - name: registry_credentials
+        type: string
+        default: registrycredential
+      - name: accept_license
+        type: bool
+        description: Flag indicating if the watson-runtime license should be accepted
+        default: false
     version: v0.0.81
     outputs:
       - name: name
