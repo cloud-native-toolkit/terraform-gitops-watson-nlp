@@ -104,48 +104,47 @@ variable "cluster_type" {
 
 variable "runtime_registry" {
   description = "runtime_registry"
-  default     = "artifactory"
+  default     = "watson"
 }
 
 variable "runtime_image" {
   description = "runtime_image"
-  default     = "watson-nlp-runtime:1.0.0"
+  default     = "watson-nlp-runtime:1.0.15"
 }
 
 variable "models" {
   type    = list(map(string))
   default = [{
-    registry = "artifactory"
-    image = "watson-nlp_syntax_izumo_lang_en_stock:1.0.0"
+    registry = "watson"
+    image = "watson-nlp_syntax_izumo_lang_en_stock:1.0.5"
   }]
 }
 
 variable "imagePullSecrets" {
   type    = list(string)
-  default = ["artifactory-key"]
+  default = ["ibm-entitlement-key"]
   /*default = []*/
 }
 
 variable "registries" {
   type    = list(map(string))
   default = [{
-    name = "artifactory"
-    url = "wcp-ai-foundation-team-docker-virtual.artifactory.swg-devops.com"
+    name = "watson"
+    url = "cp.icr.io/cp/ai"
   }]
 }
 
 variable "registryUserNames" {
   type    = list(map(string))
   default = [{
-    userName = "user@domain.com"
+    userName = "cp"
   }]
   /*default = []*/
 }
 
 variable "registry_credentials" {
   type    = string
-  default = "registrycredential"
-  /*default = ""*/
+  default = ""
 }
 
 variable "accept_license" {

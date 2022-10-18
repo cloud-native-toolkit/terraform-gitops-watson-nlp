@@ -6,4 +6,6 @@ module "gitops_watson-nlp" {
   server_name = module.gitops.server_name
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
+  registry_credentials = var.cp_entitlement_key
+  accept_license = true
 }
