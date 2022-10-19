@@ -57,7 +57,7 @@ check_k8s_resource () {
   until kubectl get "${GITOPS_TYPE}" "${NAME}" -n "${NS}" 1> /dev/null 2> /dev/null || [[ $count -gt 20 ]]; do
     echo "Waiting for ${GITOPS_TYPE}/${NAME} in ${NS}"
     count=$((count + 1))
-    sleep 60
+    sleep 30
   done
 
   if [[ $count -gt 20 ]]; then
