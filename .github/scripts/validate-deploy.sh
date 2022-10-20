@@ -82,8 +82,7 @@ sleep 2m
 echo "******************************"
 echo " TestCase 3: validate deployment check_k8s_resource"
 echo "******************************"
-#To be enabled after GA
-#check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-embedded"
+check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-embedded"
 
 echo "******************************"
 echo " TestCase 4: validate service check_k8s_resource"
