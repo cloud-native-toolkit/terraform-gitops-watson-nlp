@@ -67,8 +67,7 @@ echo " TestCase 1: validate helm chart validate_gitops_content"
 echo "******************************"
 echo ""
 validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values.yaml"
-validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/deployment.yaml"
-validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "templates/service.yaml"
+validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "Chart.yaml"
 
 echo "******************************"
 echo " TestCase 2: validate namespace check_k8s_namespace"
@@ -77,13 +76,12 @@ echo ""
 check_k8s_namespace "${NAMESPACE}"
 
 echo "Sleeping to allow the deployment to settle down..."
-sleep 2m
+sleep 5m
 
 echo "******************************"
 echo " TestCase 3: validate deployment check_k8s_resource"
 echo "******************************"
-#To be enabled after GA
-#check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-embedded"
+check_k8s_resource "${NAMESPACE}" "deployment" "watson-nlp-embedded"
 
 echo "******************************"
 echo " TestCase 4: validate service check_k8s_resource"
