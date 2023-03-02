@@ -5,16 +5,18 @@ locals {
   models = var.models
 
   values_content = {
-    "componentName" = "embedded"
-    "acceptLicense" = var.accept_license
-    "serviceType" = "ClusterIP"
-    "registries" = var.registries
-    "imagePullSecrets" = var.imagePullSecrets
-    "runtime" = {
-      "registry": var.runtime_registry
-      "image": var.runtime_image
+    "watson-nlp" = {
+      "componentName" = "embedded"
+      "acceptLicense" = var.accept_license
+      "serviceType" = "ClusterIP"
+      "registries" = var.registries
+      "imagePullSecrets" = var.imagePullSecrets
+      "runtime" = {
+        "registry": var.runtime_registry
+        "image": var.runtime_image
+      }
+      "models" = var.models
     }
-    "models" = var.models
   }
   layer = "services"
   type  = "base"
