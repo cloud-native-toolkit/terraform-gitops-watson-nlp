@@ -76,7 +76,7 @@ echo ""
 check_k8s_namespace "${NAMESPACE}"
 
 echo "Sleeping to allow the deployment to settle down..."
-sleep 5m
+sleep 10m
 
 echo "******************************"
 echo " TestCase 3: validate deployment check_k8s_resource"
