@@ -1,0 +1,6 @@
+dependencies:
+- name: watson-nlp
+  repository: https://charts.cloudnativetoolkit.dev/
+  version: 0.1.2
+digest: sha256:4dd766fae3be18c62cb93e41be31fa0085d7dab6e7de5a73f95b8787bed8e54e
+generated: "2023-03-01T21:15:55.970405-08:00"
